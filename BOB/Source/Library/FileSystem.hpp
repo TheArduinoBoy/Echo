@@ -11,9 +11,9 @@ struct DevicePathProtocol {
 struct LoadedImageProtocol {
   unsigned int Revision;
   void* ParentHandle;
-  SystemTable* SystemTable;
+  struct SystemTable* SystemTable;
   void* DeviceHandle;
-  DevicePathProtocol* FilePath;
+  struct DevicePathProtocol* FilePath;
   void* Reserved;
   unsigned int LoadOptionsSize;
   void* LoadOptions, *ImageBase;

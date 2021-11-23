@@ -22,3 +22,28 @@ struct ELFProgramHeaders {
 };
 
 #endif
+
+#ifndef ELFDynamicEntry
+
+struct ELFDynamicEntry {
+  long long int d_tag;
+  union {
+    unsigned long long int d_val, d_ptr;
+  } d_un;
+};
+
+#endif
+
+#ifndef ELFRelocationEntry
+
+struct ELFRelocationEntry {
+  unsigned long long int r_offset;
+  unsigned long long int r_info;
+  unsigned int getSymbol() const { return (r_info >> 32); }
+  unsigned int getType() const { return (unsigned int)(r_info & 0xffffffffL); }
+  void setSymbol(unsigned int s) { setSymbolAndType(s, getType()); }
+  void setType(unsigned int t) { setSymbolAndType(getSymbol(), t); }
+  void setSymbolAndType(unsigned int s, unsigned int t) { r_info = ((unsigned long long int)s << 32) + (t & 0xffffffffL); }
+};
+
+#endif

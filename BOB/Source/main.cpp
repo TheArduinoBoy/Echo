@@ -1,3 +1,4 @@
+#include "Library/Memory.hpp"
 #include "Library/SystemTable.hpp"
 #include "Library/FileSystem.hpp"
 #include "Library/GOP.hpp"
@@ -21,8 +22,8 @@ void addBar() {
 }
 
 void fill(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned int color) {
-  for (int j = y; j < y+height; j++) {
-    for (int i = x; i < x+width; i++) {
+  for (unsigned int j = y; j < y+height; j++) {
+    for (unsigned int i = x; i < x+width; i++) {
       putpixel(i,j,color);
     }
   }

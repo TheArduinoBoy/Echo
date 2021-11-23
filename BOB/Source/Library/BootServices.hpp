@@ -1,5 +1,4 @@
 #ifndef BootServices
-#include "Memory.hpp"
 #include "GUID.hpp"
 
 struct BootServices {
